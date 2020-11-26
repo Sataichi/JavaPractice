@@ -22,19 +22,17 @@ public class Que3 {
 
         //way 1
         List<Map<String, String>> json = users.stream()
-            .map(x -> {
-                return Arrays.stream(x.getClass().getDeclaredFields())
-                    .collect(Collectors.toMap(y -> y.getName(),
-                        y -> {
-                            y.setAccessible(true);
-                            try {
-                                return y.get(x).toString();
-                            } catch (IllegalArgumentException | IllegalAccessException e) {
-                                e.printStackTrace();
-                                return null;
-                            }
-                        }));
-            })
+            .map(x -> Arrays.stream(x.getClass().getDeclaredFields())
+                .collect(Collectors.toMap(y -> y.getName(),
+                    y -> {
+                        y.setAccessible(true);
+                        try {
+                            return y.get(x).toString();
+                        } catch (IllegalArgumentException | IllegalAccessException e) {
+                            e.printStackTrace();
+                            return null;
+                        }
+                    })))
             .collect(Collectors.toList());
 
         //way2

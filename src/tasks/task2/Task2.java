@@ -1,6 +1,5 @@
 package tasks.task2;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
